@@ -29,7 +29,6 @@ namespace projectEF.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -43,6 +42,20 @@ namespace projectEF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b47a76bf-0c1d-4e2c-bd74-ec2bde6e2ad1"),
+                            Name = "Actividades pendientes",
+                            Weight = 20
+                        },
+                        new
+                        {
+                            Id = new Guid("b47a76bf-0c1d-4e2c-bd74-ec2bde6e2ad2"),
+                            Name = "Actividades personales",
+                            Weight = 50
+                        });
                 });
 
             modelBuilder.Entity("projectEF.Models.Task", b =>
@@ -58,7 +71,6 @@ namespace projectEF.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Priority")
